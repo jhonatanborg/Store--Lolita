@@ -1,21 +1,23 @@
 <template>
   <div class="py-5 col-sm-10 mx-auto">
     <v-row justify="center">
-      <v-col sm="5">
+      <v-col cols="12" sm="6">
         <v-img
-          src="https://t-static.dafiti.com.br/bY_rN5Os8vsdbGjhxcndBSTtvCs=/fit-in/430x623/static.dafiti.com.br/p/oakley-camiseta-oakley-reta-logo-preta-1331-8310114-1-zoom.jpg"
+          src="https://static.dafiti.com.br/p/FiveBlu-Vestido-FiveBlu-Curto-Floral-Azul/Preto-4139-1697276-2-zoom.jpg"
           aspect-ratio="1.1"
         ></v-img>
       </v-col>
       <v-col sm="5" xs="12">
         <div>
-          <h3 class="headline">Camiseta Vans Print Box Ss Preta</h3>
+          <h3 class="grey--text lighten-3">
+            Vestido Lolyta Curto Floral Azul/Preto
+          </h3>
           <div>
             <small>CÓDIGO: 758425</small>
           </div>
         </div>
         <div class="my-5">
-          <span class="headline font-weight-bold">R$ 500,00</span>
+          <span class="headline font-weight-bold">R$ 150,00</span>
         </div>
         <div class="my-5">
           <div><small>Descrição</small></div>
@@ -55,6 +57,26 @@
               >
             </v-col>
           </v-row>
+          <div class="pa-5 grey lighten-3 my-5" v-if="delivery">
+            <div class="d-flex justify-space-between">
+              <div>
+                <small>Receba seu produto em até</small> <br />
+                <span
+                  v-text="
+                    delivery.delivery_time >= 1
+                      ? delivery.delivery_time + ' dias'
+                      : delivery.delivery_time + ' dia'
+                  "
+                ></span>
+              </div>
+              <div>
+                <v-chip label outlined color="primary">
+                  <span class="mx-2">Frete </span>
+                  <span v-text="convertMoney(delivery.price)"></span>
+                </v-chip>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="my-5">
           <v-btn
@@ -69,16 +91,31 @@
         </div>
       </v-col>
     </v-row>
+    <v-row justify="center">
+      <v-col cols="6" v-for="item in 6" :key="item" sm="2">
+        <Categorie
+          title="Feminino"
+          image="https://ph-cdn1.ecosweb.com.br/imagens01/foto/moda-feminina/cropped/blusa-cropped-poa-farofa-amarelo_594831_600_1.jpg"
+        />
+      </v-col>
+    </v-row>
   </div>
 </template>
 
 <script>
+import Mixins from "@/mixins/mixins";
+import Categorie from "@/components/categorie/Categorie.vue";
 import axios from "axios";
 export default {
+  components: {
+    Categorie,
+  },
+  mixins: [Mixins],
+
   data() {
     return {
       cep: "78850-041",
-      response: null,
+      delivery: null,
     };
   },
   methods: {
@@ -92,7 +129,7 @@ export default {
         method: "POST",
         data: {
           from: {
-            postal_code: "96020360",
+            postal_code: "78556136",
           },
           to: {
             postal_code: this.cep,
@@ -116,7 +153,6 @@ export default {
         },
       }).then((resp) => {
         let minimalCostDelivery = { price: -1 };
-
         resp.data.forEach((item) => {
           if (
             minimalCostDelivery.price === -1 ||
@@ -125,8 +161,8 @@ export default {
             minimalCostDelivery = item;
           }
         });
-        this.response = minimalCostDelivery.price;
-        console.log(minimalCostDelivery);
+        this.delivery = minimalCostDelivery;
+        console.log(this.delivery);
       });
     },
   },

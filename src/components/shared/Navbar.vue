@@ -3,9 +3,6 @@
     <v-app-bar app flat color="white" light>
       <v-toolbar-title>Lolita store</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn class="mr-2 text-capitalize hidden-sm-and-down" text>
-        Categorias
-      </v-btn>
       <v-btn
         :to="{ name: 'list-products' }"
         class="mr-2 text-capitalize hidden-sm-and-down"

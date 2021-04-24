@@ -1,10 +1,14 @@
 <template>
-  <v-card flat class="pa-5">
-    <v-img aspect-ratio="1.1" :src="image" />
-    <div class="py-2">
-      <span class="font-weight-bold" v-text="title"></span>
+  <div class="mx-auto" flat raised rounded>
+    <div class="d-flex justify-center">
+      <v-avatar size="100" color="white">
+        <v-img aspect-ratio="1.1" :src="image" />
+      </v-avatar>
     </div>
-  </v-card>
+    <div class="pa-2 text-center">
+      <span class="grey--text" v-text="title"></span>
+    </div>
+  </div>
 </template>
 
 <script>

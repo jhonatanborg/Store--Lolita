@@ -1,6 +1,6 @@
 <template>
   <v-row justify="center">
-    <v-col cols="auto" v-for="(item, i) in items" :key="i">
+    <v-col cols="auto" sm="4" v-for="(item, i) in items" :key="i">
       <v-card flat class="mx-auto" max-width="300" tile>
         <v-list-item three-line>
           <v-list-item-icon>

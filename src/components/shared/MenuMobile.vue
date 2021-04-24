@@ -31,7 +31,7 @@
       </v-list-item>
       <v-list-item :to="{ name: 'list-products' }" link>
         <v-list-item-content>
-          <v-list-item-title>Cardápio</v-list-item-title>
+          <v-list-item-title>Produtos</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
       <v-list-item :to="{ name: 'about' }" link>
@@ -60,10 +60,10 @@ export default {
       }
     },
     loginModal() {
-      this.$store.commit("user/request", ["login", { open: true, step: 1 }]);
+      this.$router.push({ name: "session", params: { type: "login" } });
     },
     openSale() {
-      if (this.$store.state.sale.sale.length > 0) {
+      if (this.$store.state.sale.sales.length > 0) {
         this.$store.commit("sale/request", ["cart", { open: true, step: 1 }]);
       } else {
         this.$store.commit("sale/request", ["cart", { open: true, step: 4 }]);

@@ -1,17 +1,16 @@
 <template>
-  <div class="my-5 col-sm-10 mx-auto">
+  <div class="col-sm-12 mx-auto grey lighten-5">
+    <div>
+      <div class="my-2">
+        <span>Categorias</span>
+      </div>
+      <ListCategorie />
+    </div>
+    <div>
+      <span>Moda feminina</span>
+    </div>
     <v-row>
-      <v-col sm="4">
-        <v-select
-          dense
-          :items="items"
-          v-model="value"
-          label="Categoria"
-        ></v-select>
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col class="my-5" sm="3" v-for="item in 10" :key="item">
+      <v-col cols="6" class="my-5" sm="3" v-for="item in 10" :key="item">
         <CardProduct />
       </v-col>
     </v-row>
@@ -20,12 +19,16 @@
 
 <script>
 import CardProduct from "@/components/product/CardProduct.vue";
+import ListCategorie from "@/components/categorie/ListCategorie.vue";
 export default {
   components: {
     CardProduct,
+    ListCategorie,
   },
   data() {
     return {
+      model: null,
+
       items: ["Blusas", "Vestidos", "Jeans"],
     };
   },
