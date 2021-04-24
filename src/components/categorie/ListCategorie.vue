@@ -23,6 +23,10 @@ export default {
         infiniteScroll: true,
         centerMode: false,
         breakpoints: {
+          350: {
+            centerMode: false,
+            itemsToShow: 3,
+          },
           500: {
             centerMode: false,
             itemsToShow: 4,
