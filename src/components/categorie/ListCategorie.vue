@@ -82,12 +82,6 @@ export default {
           image:
             "https://img.ltwebstatic.com/images3_pi/2021/03/16/1615869720d16711f7e45f7947327a72a2e855998b_thumbnail_600x.webp",
         },
-        {
-          id: 8,
-          title: "Bolsas",
-          image:
-            "https://img.ltwebstatic.com/images3_pi/2021/03/10/161535914563430442fef0170de7d8147124c63c0a_thumbnail_600x.webp",
-        },
       ],
     };
   },
